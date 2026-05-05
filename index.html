@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>洗缸了沒｜高雄魚缸清洗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg-color: #f0faff;
+    --tank-border: #ffffff;
+    --water-top: #e0f7ff;
+    --water-bottom: #bae6fd;
+    --main-blue: #0ea5e9;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--bg-color);
+    overflow-x: hidden;
+    color: #1e293b;
+}
+
+/* --- HERO 區塊 --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.tank-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* 電腦版大魚缸 */
+    aspect-ratio: 16 / 10;
+}
+
+.aquarium-tank {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, var(--water-top) 0%, var(--water-bottom) 100%);
+    border: 12px solid var(--tank-border);
+    border-radius: 50px 50px 80px 80px;
+    box-shadow: 0 30px 60px rgba(14, 165, 233, 0.2), inset 0 0 50px rgba(255, 255, 255, 0.5);
+    overflow: hidden; /* 確保魚不游出去 */
+    z-index: 1;
+}
+
+/* 內容文字 */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 8vw, 64px);
+    margin: 0;
+    color: #0369a1;
+    text-shadow: 2px 2px 0px white;
+}
+
+.hero p {
+    font-size: clamp(16px, 3vw, 22px);
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+/* --- 魚兒向前游動畫邏輯 --- */
+.fish-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.fish {
+    position: absolute;
+    font-size: clamp(30px, 6vw, 55px);
+    will-change: transform, left;
+}
+
+/* 
+   修正重點：
+   Emoji 預設通常頭朝左。
+   向右游 (0% -> 50%): 需要 scaleX(-1) 讓頭朝右。
+   向左游 (50% -> 100%): 需要 scaleX(1) 讓頭朝左。
+*/
+
+@keyframes swim-forward-right {
+    0%   { left: -10%; transform: scaleX(-1); } /* 頭朝右開始 */
+    49%  { transform: scaleX(-1); }            /* 到達右邊前保持朝右 */
+    50%  { left: 100%; transform: scaleX(1); }  /* 轉身朝左 */
+    99%  { transform: scaleX(1); }             /* 回到左邊前保持朝左 */
+    100% { left: -10%; transform: scaleX(-1); } /* 重置轉身 */
+}
+
+@keyframes swim-forward-left {
+    0%   { right: -10%; transform: scaleX(1); }  /* 頭朝左開始 */
+    49%  { transform: scaleX(1); }              /* 到達左邊前保持朝左 */
+    50%  { right: 100%; transform: scaleX(-1); } /* 轉身朝右 */
+    99%  { transform: scaleX(-1); }             /* 回到右邊前保持朝右 */
+    100% { right: -10%; transform: scaleX(1); }  /* 重置轉身 */
+}
+
+.fish-a { top: 15%; animation: swim-forward-right 14s infinite linear; }
+.fish-b { top: 45%; animation: swim-forward-left 18s infinite linear; }
+.fish-c { top: 75%; animation: swim-forward-right 22s infinite linear; }
+
+/* --- 通用樣式 --- */
+.btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--main-blue);
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    pointer-events: auto;
+}
+
+.section { padding: 60px 20px; max-width: 1100px; margin: auto; }
+.section h2 { text-align: center; color: #0369a1; font-size: 32px; margin-bottom: 40px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+.card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; border: 1px solid #e0f2fe; }
+
+footer { text-align: center; padding: 40px; color: #94a3b8; }
+
+@media (max-width: 600px) {
+    .tank-container { aspect-ratio: 1 / 1.2; }
+    .aquarium-tank { border-width: 8px; border-radius: 30px; }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="tank-container">
+        <div class="aquarium-tank">
+            <div class="fish-box">
+                <div class="fish fish-a">🐠</div>
+                <div class="fish fish-b">🐟</div>
+                <div class="fish fish-c">🐡</div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>洗缸了沒？</h1>
+            <p>高雄魚缸清洗｜到府保養服務</p>
+            <p style="opacity: 0.8;">專業、細心，讓您的魚兒開心游</p>
+            <a href="#" class="btn">立即預約服務</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>專業服務項目</h2>
+    <div class="grid">
+        <div class="card">🧼 魚缸清洗</div>
+        <div class="card">🔄 濾材更換</div>
+        <div class="card">💧 水質檢測</div>
+        <div class="card">⚙️ 設備維護</div>
+        <div class="card">🐟 健康評估</div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>收費參考</h2>
+    <div class="grid">
+        <div class="card">小型魚缸<br><b>$800 起</b></div>
+        <div class="card">中型魚缸<br><b>$1200 起</b></div>
+        <div class="card">大型魚缸<br><b>$2000 起</b></div>
+    </div>
+</section>
+
+<footer>
+© 洗缸了沒｜高雄專業魚缸保養
+</footer>
+
+</body>
+</html>

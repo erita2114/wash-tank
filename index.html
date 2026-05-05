@@ -62,30 +62,33 @@
         backdrop-filter: blur(10px);
         display: flex;
         align-items: center;
-        padding: 10px 30px;
+        padding: 10px 20px;
         z-index: 999;
         box-sizing: border-box;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
-    .logo-small { height: 60px; margin-right: 10px; }
+    .logo-small { height: 50px; margin-right: 10px; }
     .brand-text { display: flex; flex-direction: column; }
-    .brand-title { font-family: 'jf-openhuninn', sans-serif; font-size: 20px; font-weight: 700; color: var(--dark-blue); }
-    .brand-sub { font-size: 13px; color: #475569; }
+    .brand-title { font-family: 'jf-openhuninn', sans-serif; font-size: 18px; font-weight: 700; color: var(--dark-blue); line-height: 1.2; }
+    .brand-sub { font-size: 11px; color: #475569; }
 
     /* --- HERO --- */
     .hero {
-        min-height: 80vh;
+        min-height: 85vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 100px 20px 40px;
+        padding: 100px 15px 30px; /* 縮減底部間距 */
+        box-sizing: border-box;
     }
 
     .tank-container {
         position: relative;
         width: 100%;
-        max-width: 900px;
+        max-width: 850px;
         aspect-ratio: 16 / 10;
+        margin: 0 auto; /* 強制水平居中 */
     }
 
     .aquarium-tank {
@@ -93,11 +96,12 @@
         width: 100%;
         height: 100%;
         background: linear-gradient(180deg, var(--water-top) 0%, var(--water-bottom) 100%);
-        border: 12px solid var(--tank-border);
-        border-radius: 50px 50px 80px 80px;
-        box-shadow: 0 30px 60px rgba(14, 165, 233, 0.2), inset 0 0 50px rgba(255, 255, 255, 0.5);
+        border: 10px solid var(--tank-border);
+        border-radius: 40px 40px 60px 60px;
+        box-shadow: 0 20px 50px rgba(14, 165, 233, 0.15), inset 0 0 40px rgba(255, 255, 255, 0.5);
         overflow: hidden;
         z-index: 1;
+        box-sizing: border-box;
     }
 
     .hero-content {
@@ -105,26 +109,32 @@
         z-index: 10;
         text-align: center;
         pointer-events: none;
-        padding-top: 5%;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
     }
 
-    .hero-logo { width: clamp(280px, 50vw, 450px); margin-bottom: 10px; }
-    .hero-sub { font-family: 'jf-openhuninn', sans-serif; color: #075985; text-shadow: 0 2px 4px rgba(255,255,255,0.8); }
+    .hero-logo { width: clamp(220px, 60vw, 420px); margin-bottom: 5px; }
+    .hero-sub { font-family: 'jf-openhuninn', sans-serif; color: #075985; text-shadow: 0 1px 3px rgba(255,255,255,0.9); font-size: 0.95rem; }
+    .hero-sub p { margin: 5px 0; }
 
     /* 魚動畫 */
-    .fish-box { position: absolute; width: 100%; height: 100%; }
-    .fish { position: absolute; font-size: clamp(30px, 6vw, 55px); transition: transform 0.3s; }
+    .fish-box { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
+    .fish { position: absolute; font-size: clamp(25px, 5vw, 50px); transition: transform 0.3s; }
     @keyframes swim-right {
-        0% { left: -10%; transform: scaleX(-1); }
-        50% { left: 100%; transform: scaleX(-1); }
+        0% { left: -15%; transform: scaleX(-1); }
+        50% { left: 110%; transform: scaleX(-1); }
         51% { transform: scaleX(1); }
-        100% { left: -10%; transform: scaleX(1); }
+        100% { left: -15%; transform: scaleX(1); }
     }
     @keyframes swim-left {
-        0% { right: -10%; transform: scaleX(1); }
-        50% { right: 100%; transform: scaleX(1); }
+        0% { right: -15%; transform: scaleX(1); }
+        50% { right: 110%; transform: scaleX(1); }
         51% { transform: scaleX(-1); }
-        100% { right: -10%; transform: scaleX(-1); }
+        100% { right: -15%; transform: scaleX(-1); }
     }
     .fish-a { top: 15%; animation: swim-right 14s infinite linear; }
     .fish-b { top: 45%; animation: swim-left 18s infinite linear; }
@@ -132,9 +142,9 @@
 
     /* 按鈕 */
     .btn {
-        margin-top: 20px;
+        margin-top: 15px;
         display: inline-block;
-        padding: 15px 40px;
+        padding: 12px 35px;
         background: var(--main-blue);
         color: white;
         border-radius: 50px;
@@ -143,27 +153,48 @@
         pointer-events: auto;
         box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
         transition: 0.3s;
+        font-size: 16px;
     }
     .btn:hover { background: var(--dark-blue); transform: scale(1.05); }
 
-    /* 區塊樣式 */
-    .section { padding: 80px 20px; max-width: 1000px; margin: auto; }
-    .section h2 { text-align: center; color: var(--dark-blue); font-size: 32px; margin-bottom: 40px; font-family: 'jf-openhuninn', sans-serif; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-    .card { background: white; padding: 30px 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; border: 1px solid #e0f2fe; }
-    .card-icon { font-size: 40px; margin-bottom: 15px; display: block; }
+    /* 區塊樣式 - 調整間距 */
+    .section { padding: 50px 20px; max-width: 1000px; margin: auto; }
+    .section h2 { 
+        text-align: center; 
+        color: var(--dark-blue); 
+        font-size: 28px; 
+        margin-bottom: 25px; 
+        margin-top: 0;
+        font-family: 'jf-openhuninn', sans-serif; 
+    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
+    .card { background: white; padding: 25px 20px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.04); text-align: center; border: 1px solid #e0f2fe; }
+    .card-icon { font-size: 35px; margin-bottom: 10px; display: block; }
+    .card h3 { margin: 10px 0; color: var(--dark-blue); font-size: 20px; }
+    .card p { margin: 0; font-size: 15px; color: #475569; }
 
     /* 預約流程流程 */
-    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
-    .process-item { position: relative; text-align: center; padding: 20px; }
-    .step-num { display: inline-block; width: 30px; height: 30px; background: var(--main-blue); color: white; border-radius: 50%; line-height: 30px; margin-bottom: 10px; font-weight: bold; }
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+    .process-item { position: relative; text-align: center; padding: 15px; }
+    .step-num { display: inline-block; width: 28px; height: 28px; background: var(--main-blue); color: white; border-radius: 50%; line-height: 28px; margin-bottom: 10px; font-weight: bold; font-size: 14px; }
+    .process-item p { font-size: 14px; margin: 0; }
 
-    footer { text-align: center; padding: 60px 20px; color: #64748b; background: #e0f2fe; margin-top: 50px; }
-    .footer-info { margin-bottom: 20px; font-size: 14px; }
+    footer { text-align: center; padding: 40px 20px; color: #64748b; background: #e0f2fe; margin-top: 30px; }
+    .footer-info { margin-bottom: 15px; font-size: 14px; }
+    .footer-info p { margin: 5px 0; }
 
+    /* RWD 手機版優化 */
     @media (max-width: 600px) {
-        .tank-container { aspect-ratio: 1 / 1.3; }
-        .hero { padding-top: 120px; }
+        .tank-container { 
+            width: 95%; /* 確保手機版不會貼邊，維持置中感 */
+            aspect-ratio: 1 / 1.35; 
+        }
+        .hero { padding-top: 90px; min-height: auto; }
+        .hero-logo { width: 85%; }
+        .section { padding: 40px 20px; }
+        .section h2 { font-size: 24px; }
+        .grid { grid-template-columns: 1fr; } /* 手機版卡片改為單排更易閱讀 */
+        .process-grid { grid-template-columns: 1fr 1fr; }
     }
     </style>
 
@@ -231,7 +262,7 @@
     </div>
 </section>
 
-<!-- 新增：為什麼選擇我們 (SEO 關鍵字注入區) -->
+<!-- 為什麼選擇我們 -->
 <section class="section">
     <h2>專業處理各種魚缸問題</h2>
     <div class="grid">
@@ -253,6 +284,7 @@
     </div>
 </section>
 
+<!-- 服務項目 -->
 <section class="section">
     <h2>服務項目</h2>
     <div class="grid">
@@ -263,7 +295,7 @@
     </div>
 </section>
 
-<!-- 新增：服務流程 -->
+<!-- 服務流程 -->
 <section class="section">
     <h2>預約服務流程</h2>
     <div class="process-grid">
@@ -286,6 +318,7 @@
     </div>
 </section>
 
+<!-- 收費參考 -->
 <section class="section">
     <h2>收費參考</h2>
     <div class="grid">
@@ -293,13 +326,13 @@
         <div class="card">中型魚缸 (2-3尺)<br><b style="font-size: 24px; color: var(--main-blue);">$1200 起</b></div>
         <div class="card">大型魚缸 (4尺以上)<br><b style="font-size: 24px; color: var(--main-blue);">$2000 起</b></div>
     </div>
-    <p style="text-align: center; color: #64748b; margin-top: 20px;">* 實際費用依魚缸髒污程度與造景複雜度而定，歡迎拍照洽詢。</p>
+    <p style="text-align: center; color: #64748b; margin-top: 15px; font-size: 14px;">* 實際費用依魚缸髒污程度與造景複雜度而定，歡迎拍照洽詢。</p>
 </section>
 
 <footer>
     <div class="footer-info">
         <p><b>洗缸了沒｜高雄專業魚缸保養服務</b></p>
-        <p>服務區域：高雄全區 (苓雅、新興、前鎮、左營、三民、鳳山等)</p>
+        <p>服務區域：高雄全區 (小港、苓雅、新興、前鎮、左營、三民、鳳山等) 嘉義、台南、屏東需另外報價</p>
         <p>預約專線：09xx-xxx-xxx (或私訊 Line 預約)</p>
     </div>
     <div style="font-size: 12px; opacity: 0.8;">

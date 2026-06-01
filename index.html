@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- 1. 在這裡加入網站圖示 (Favicon) -->
+    <!-- 1. 在這裡加入網站圖示 (Favicon) -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="images/logo_48x48.png" type="image/png">
     <link rel="apple-touch-icon" href="images/logo_180x180.png">
@@ -86,7 +86,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 100px 15px 30px; /* 縮減底部間距 */
+        padding: 100px 15px 30px; 
         box-sizing: border-box;
     }
 
@@ -95,7 +95,7 @@
         width: 100%;
         max-width: 850px;
         aspect-ratio: 16 / 10;
-        margin: 0 auto; /* 強制水平居中 */
+        margin: 0 auto; 
     }
 
     .aquarium-tank {
@@ -164,7 +164,7 @@
     }
     .btn:hover { background: var(--dark-blue); transform: scale(1.05); }
 
-    /* 區塊樣式 - 調整間距 */
+    /* 區塊樣式 */
     .section { padding: 50px 20px; max-width: 1000px; margin: auto; }
     .section h2 { 
         text-align: center; 
@@ -180,6 +180,27 @@
     .card h3 { margin: 10px 0; color: var(--dark-blue); font-size: 20px; }
     .card p { margin: 0; font-size: 15px; color: #475569; }
 
+    /* 🎬 GitHub 影片專用外框樣式 */
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 760px;
+        aspect-ratio: 16 / 9;
+        margin: 0 auto;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(14, 165, 233, 0.15);
+        border: 8px solid var(--tank-border);
+        box-sizing: border-box;
+        background: #000; /* 影片載入前防黑邊 */
+    }
+    .video-wrapper video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* 讓影片完美填滿框框 */
+    }
+
     /* 預約流程流程 */
     .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
     .process-item { position: relative; text-align: center; padding: 15px; }
@@ -193,15 +214,16 @@
     /* RWD 手機版優化 */
     @media (max-width: 600px) {
         .tank-container { 
-            width: 95%; /* 確保手機版不會貼邊，維持置中感 */
+            width: 95%; 
             aspect-ratio: 1 / 1.1; 
         }
         .hero { padding-top: 90px; min-height: auto; }
         .hero-logo { width: 85%; }
         .section { padding: 40px 20px; }
         .section h2 { font-size: 24px; }
-        .grid { grid-template-columns: 1fr; } /* 手機版卡片改為單排更易閱讀 */
+        .grid { grid-template-columns: 1fr; } 
         .process-grid { grid-template-columns: 1fr 1fr; }
+        .video-wrapper { border-width: 5px; border-radius: 15px; }
     }
     </style>
 
@@ -299,6 +321,19 @@
         <div class="card"><b>🔄 濾材更換</b><br>提升培菌過濾效能</div>
         <div class="card"><b>💧 水質檢測</b><br>PH/氨/硝酸鹽測試</div>
         <div class="card"><b>⚙️ 設備維護</b><br>馬達、燈具、沉馬檢修</div>
+    </div>
+</section>
+
+<!-- 🎬 新增：換缸移缸影片播放區塊 (GitHub 專用寫法) -->
+<section class="section">
+    <h2>換缸移缸</h2>
+    <div class="video-wrapper">
+        <!-- controls 讓用戶可以點播放/暫停，playsinline 確保手機不會強制全螢幕 -->
+        <video controls playsinline poster="images/logo2.png">
+            <!-- ⬇️ 這裡鍵入你 GitHub 的影片檔案路徑 (或直接換成 Raw 絕對網址) ⬇️ -->
+            <source src="videos/換缸影片檔名.mp4" type="video/mp4">
+            你的瀏覽器不支援播放此影片。
+        </video>
     </div>
 </section>
 

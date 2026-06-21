@@ -312,11 +312,8 @@ document.getElementById('reviewForm').addEventListener('submit', function(e) {
     // 格式化傳送到 LINE 的文字訊息
     const lineMessage = `【洗缸了沒官網新評價】\n\n👤 客戶暱稱：${name}\n⭐ 滿意星等：${stars} (${rating}星)\n💬 真心評論：\n${comment}\n\n📸 (請於下方直接附上清洗後的魚缸美照檔案，感恩！\u2764)`;
 
-    // 你的官方 LINE 預約網址：https://lin.ee/5P4y75u
-    // 利用 LINE URL Scheme 技術自動帶入文字 (把網址後面的 ID 抽出來串接)
+    // 💡 修正重點：oaMessage 後方不可以帶 @ 符號
     const encodedText = encodeURIComponent(lineMessage);
-    
-    // 串接跳轉連結 (自動開啟 LINE 聊天室並填好字)
     const lineJumpUrl = `https://line.me/R/oaMessage/5P4y75u/?${encodedText}`;
     
     // 彈出感謝提示並執行跳轉

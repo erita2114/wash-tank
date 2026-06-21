@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- 1. 在這裡加入網站圖示 (Favicon) -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="images/logo_48x48.png" type="image/png">
     <link rel="apple-touch-icon" href="images/logo_180x180.png">
 
+    <!-- SEO 優化 -->
     <title>洗缸了沒｜高雄魚缸清洗、到府保養、水質檢測專業服務</title>
     <meta name="description" content="高雄專業魚缸清洗「洗缸了沒」，提供魚缸保養、濾材更換、水質檢測服務。解決魚缸藻類、混濁臭味問題，讓您的愛魚擁有清澈家園。高雄全區預約中。">
     <meta name="keywords" content="高雄魚缸清洗, 高雄水族保養, 到府洗魚缸, 魚缸換水, 濾材更換, 高雄魚缸清潔, 訂製魚缸, 高雄到府魚缸維護, 洗魚缸, 魚缸清潔">
     <meta name="google-site-verification" content="-i7VXnsVg4zDJ8ApWec60F25MyH0KKUn08Q0PoNsedw" />
     
+    <!-- Open Graph 標籤 (社群分享用) -->
     <meta property="og:title" content="洗缸了沒｜高雄專業魚缸清洗保養（家庭/商用定期維護）">
     <meta property="og:description" content="你的魚缸多久沒洗了？高雄專業到府清潔，讓您的魚缸煥然一新！">
     <meta property="og:image" content="images/logo2.png">
@@ -177,12 +180,12 @@
     .card h3 { margin: 10px 0; color: var(--dark-blue); font-size: 20px; }
     .card p { margin: 0; font-size: 15px; color: #475569; }
 
-    /* 📸 新增：左右拖曳對比組件樣式 */
+    /* 📸 左右拖曳對比組件樣式 */
     .comparison-slider {
         position: relative;
         width: 100%;
         max-width: 760px;
-        aspect-ratio: 16 / 10; /* 配合大魚缸比例 */
+        aspect-ratio: 16 / 10; 
         margin: 0 auto;
         border-radius: 25px;
         overflow: hidden;
@@ -202,7 +205,7 @@
         display: block;
     }
     .img-after { z-index: 1; }
-    .img-before { z-index: 2; clip-path: inset(0 50% 0 0); } /* 預開一半 */
+    .img-before { z-index: 2; clip-path: inset(0 50% 0 0); } 
     
     /* 對比標籤 */
     .slider-label {
@@ -250,7 +253,7 @@
     }
     .slider-button::before { content: "↔"; font-weight: bold; }
 
-    /* 🎬 GitHub 影片專用外框樣式 */
+    /* 🎬 影片通用外框樣式 */
     .video-wrapper {
         position: relative;
         width: 100%;
@@ -298,6 +301,7 @@
     }
     </style>
 
+    <!-- Google 結構化資料 (幫助 SEO) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -322,6 +326,7 @@
 
 <body>
 
+<!-- 氣泡背景 -->
 <div class="bubble" style="left:10%; width:15px; height:15px; animation-duration:8s;"></div>
 <div class="bubble" style="left:25%; width:10px; height:10px; animation-duration:6s;"></div>
 <div class="bubble" style="left:40%; width:20px; height:20px; animation-duration:10s;"></div>
@@ -329,6 +334,7 @@
 <div class="bubble" style="left:75%; width:18px; height:18px; animation-duration:9s;"></div>
 <div class="bubble" style="left:90%; width:14px; height:14px; animation-duration:11s;"></div>
 
+<!-- NAVBAR -->
 <header class="navbar">
     <img src="images/logo.png" class="logo-small" alt="洗缸了沒 Logo">
     <div class="brand-text">
@@ -337,6 +343,7 @@
     </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
     <div class="tank-container">
         <div class="aquarium-tank">
@@ -352,11 +359,13 @@
             <div class="hero-sub">
                 <p>你的魚缸多久沒洗了？<br>水變濁、長藻、魚狀況不好<br>我們幫你一次整理乾淨！</p>
             </div>
+            <!-- 替換為你的 Line 連結 -->
             <a href="https://lin.ee/5P4y75u" class="btn">立即 Line 預約服務</a>
         </div>
     </div>
 </section>
 
+<!-- 為什麼選擇我們 -->
 <section class="section">
     <h2>專業處理各種魚缸問題</h2>
     <div class="grid">
@@ -378,6 +387,7 @@
     </div>
 </section>
 
+<!-- 服務項目 -->
 <section class="section">
     <h2>服務項目</h2>
     <div class="grid">
@@ -388,23 +398,28 @@
     </div>
 </section>
 
+<!-- 📸 清洗前後左右拖曳對比區塊 -->
 <section class="section">
     <h2>清洗前後驚人對比 💧</h2>
     <p style="text-align: center; color: #64748b; margin-top: -15px; margin-bottom: 30px;">手動拖曳中央拉桿，親眼見證清澈奇蹟！</p>
     
     <div class="comparison-slider" id="fishTankSlider">
+        <!-- 後圖：清洗後 After -->
         <img class="img-after" src="images/after1.jpg" alt="清洗後明亮魚缸">
         <span class="slider-label label-after">清洗後 After</span>
         
+        <!-- 前圖：清洗前 Before -->
         <img class="img-before" src="images/before1.jpg" alt="清洗前髒污魚缸">
         <span class="slider-label label-before">清洗前 Before</span>
         
+        <!-- 中央拖曳滑桿 -->
         <div class="slider-handle">
             <div class="slider-button"></div>
         </div>
     </div>
 </section>
 
+<!-- 🎬 換缸移缸影片播放區塊 -->
 <section class="section">
     <h2>換缸‧移缸</h2>
     <div class="video-wrapper">
@@ -415,6 +430,19 @@
     </div>
 </section>
 
+<!-- 🎬 新增：清洗魚缸影片播放區塊 -->
+<section class="section">
+    <h2>清洗魚缸</h2>
+    <div class="video-wrapper">
+        <video controls playsinline poster="images/logo2.png">
+            <!-- ⬇️ 這裡鍵入你 GitHub 的清洗魚缸影片檔案路徑 ⬇️ -->
+            <source src="videos/清洗魚缸影片檔名.mp4" type="video/mp4">
+            你的瀏覽器不支援播放此影片。
+        </video>
+    </div>
+</section>
+
+<!-- 服務流程 -->
 <section class="section">
     <h2>預約服務流程</h2>
     <div class="process-grid">
@@ -437,6 +465,7 @@
     </div>
 </section>
 
+<!-- 收費參考 -->
 <section class="section">
     <h2>收費參考</h2>
     <div class="grid">
@@ -458,6 +487,7 @@
     </div>
 </footer>
 
+<!-- ⚡ 左右拖曳對比的核心驅動 JavaScript 代碼 -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const slider = document.getElementById("fishTankSlider");

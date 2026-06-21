@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客戶真實好評｜洗缸了沒？高雄魚缸清洗專業服務</title>
+    
+    <link href="https://cdn.jsdelivr.net/gh/justfont/open-huninn-font@master/font/jf-openhuninn.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+        --bg-color: #f0faff;
+        --tank-border: #ffffff;
+        --main-blue: #0ea5e9;
+        --dark-blue: #0369a1;
+        --star-color: #f59e0b;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Noto Sans TC', sans-serif;
+        background: var(--bg-color);
+        overflow-x: hidden;
+        color: #1e293b;
+        line-height: 1.6;
+        padding-top: 90px; /* 留出導覽列空間 */
+    }
+
+    /* ===== 氣泡背景 ===== */
+    .bubble {
+        position: fixed;
+        bottom: -50px;
+        background: radial-gradient(circle at 30% 30%, #ffffff88, #38bdf8aa);
+        border-radius: 50%;
+        animation: rise linear infinite;
+        z-index: 0;
+    }
+    @keyframes rise {
+        0% { transform: translateY(0) scale(1); opacity: 0.6; }
+        100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    .navbar, .container, footer { position: relative; z-index: 1; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.7);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        z-index: 999;
+        box-sizing: border-box;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .logo-small { height: 50px; margin-right: 10px; }
+    .brand-text { display: flex; flex-direction: column; text-decoration: none; }
+    .brand-title { font-family: 'jf-openhuninn', sans-serif; font-size: 18px; font-weight: 700; color: var(--dark-blue); line-height: 1.2; }
+    .brand-sub { font-size: 11px; color: #475569; }
+
+    /* 主容器 */
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: var(--dark-blue);
+        font-family: 'jf-openhuninn', sans-serif;
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    /* ===== 1. 填寫評價表單卡片 ===== */
+    .review-form-card {
+        background: white;
+        padding: 30px;
+        border-radius: 25px;
+        box-shadow: 0 12px 30px rgba(14, 165, 233, 0.1);
+        border: 1px solid #e0f2fe;
+        margin-bottom: 40px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: var(--dark-blue);
+    }
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+    .form-control:focus {
+        border-color: var(--main-blue);
+        outline: none;
+    }
+
+    /* 星星點選樣式 */
+    .star-rating {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        gap: 8px;
+        font-size: 35px;
+    }
+    .star-rating input { display: none; }
+    .star-rating label {
+        color: #cbd5e1;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .star-rating label:hover,
+    .star-rating label:hover ~ label,
+    .star-rating input:checked ~ label {
+        color: var(--star-color);
+    }
+
+    /* 上傳提示 */
+    .upload-hint {
+        font-size: 13px;
+        color: #64748b;
+        background: #f8fafc;
+        padding: 10px 15px;
+        border-radius: 10px;
+        border-left: 4px solid var(--main-blue);
+        margin-top: 5px;
+    }
+
+    /* ===== 2. 官網好評牆展示區 ===== */
+    .reviews-display-section h2 {
+        font-family: 'jf-openhuninn', sans-serif;
+        color: var(--dark-blue);
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .review-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    .review-card {
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+        border: 1px solid #e0f2fe;
+    }
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+    .reviewer-name { font-weight: bold; font-size: 16px; }
+    .review-stars { color: var(--star-color); font-size: 18px; }
+    .review-text { font-size: 14px; color: #475569; margin-bottom: 12px; }
+    .review-img {
+        width: 100%;
+        border-radius: 10px;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+    }
+
+    /* 按鈕 */
+    .btn {
+        width: 100%;
+        padding: 14px;
+        background: #22c55e; /* 使用綠色代表安全送出與 LINE */
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        transition: 0.3s;
+        font-family: 'jf-openhuninn', sans-serif;
+    }
+    .btn:hover { background: #16a34a; transform: scale(1.02); }
+
+    footer { text-align: center; padding: 40px 20px; color: #64748b; background: #e0f2fe; margin-top: 50px; }
+
+    @media (max-width: 600px) {
+        body { padding-top: 80px; }
+        .container { padding: 15px; }
+        h1 { font-size: 26px; }
+        .review-form-card { padding: 20px; }
+    }
+    </style>
+</head>
+<body>
+
+<div class="bubble" style="left:10%; width:15px; height:15px; animation-duration:8s;"></div>
+<div class="bubble" style="left:40%; width:20px; height:20px; animation-duration:10s;"></div>
+<div class="bubble" style="left:80%; width:18px; height:18px; animation-duration:9s;"></div>
+
+<header class="navbar">
+    <img src="images/logo.png" class="logo-small" alt="洗缸了沒 Logo">
+    <a href="index.html" class="brand-text">
+        <span class="brand-title">洗缸了沒?</span>
+        <span class="brand-sub">高雄魚缸清洗｜到府保養服務</span>
+    </a>
+</header>
+
+<div class="container">
+    <h1>給予我們支持與評價 ✨</h1>
+
+    <div class="review-form-card">
+        <form id="reviewForm">
+            <div class="form-group">
+                <label>您的稱呼／暱稱</label>
+                <input type="text" id="custName" class="form-control" placeholder="例如：鳳山陳先生" required>
+            </div>
+            
+            <div class="form-group">
+                <label>滿意度評分</label>
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5" required><label for="star5">★</label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>清洗心得與評論</label>
+                <textarea id="custComment" class="form-control" rows="4" placeholder="請分享您對這次清洗服務、水質改善或職人態度的真實感受..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>上傳現場魚缸美照</label>
+                <div class="upload-hint">
+                    由於目前系統為保護隱私安全，點擊下方送出後會<b>自動跳轉至官方 LINE</b>。請直接在 LINE 訊息視窗中，將您亮晶晶的魚缸照片傳送給我們，我們將會以最快速度更新至官網好評牆上唷！❤️
+                </div>
+            </div>
+
+            <button type="submit" class="btn">送出評價並開啟 LINE 傳送照片</button>
+        </form>
+    </div>
+
+    <div class="reviews-display-section">
+        <h2>看看其他缸友的真心推薦 💬</h2>
+        <div class="review-grid">
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">左營 林小姐</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p class="review-text">原本魚缸壁長滿了厚厚的綠藻，自己怎麼刷都刷不乾淨。謝謝職人帶了超專業工具來，連造景石頭都洗得跟全新的一樣，水質變超透亮，魚兒感覺游得好開心！</p>
+                <img src="images/after1.jpg" class="review-img" alt="客戶魚缸實照">
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">三民 郭大哥</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p class="review-text">這次請他們來做大工程的移缸跟擴缸，原本很擔心水族生態會崩潰，但師傅培菌手法很細心，搬運過程小心翼翼，魚隻完全沒有耗損，收費合情合理，大推！</p>
+                <img src="images/logo2.png" class="review-img" alt="客戶魚缸實照">
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">鳳山 溫先生</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p class="review-text">過濾設備阻塞很久發出異味，清洗完隔天完全沒臭味了，水質檢測數據也很標準，定期保養交給「洗缸了沒」讓人非常放心。</p>
+                <img src="images/after1.jpg" class="review-img" alt="客戶魚缸實照">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div style="font-size: 14px; margin-bottom: 10px;"><b>洗缸了沒｜高雄專業魚缸保養服務</b></div>
+    <div style="font-size: 12px; opacity: 0.8;">© 2026 洗缸了沒. All Rights Reserved.</div>
+</footer>
+
+<script>
+document.getElementById('reviewForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // 抓取填寫的資料
+    const name = document.getElementById('custName').value;
+    const comment = document.getElementById('custComment').value;
+    const ratingElement = document.querySelector('input[name="rating"]:checked');
+    const rating = ratingElement ? ratingElement.value : '5';
+    
+    // 組裝星星符號
+    let stars = '';
+    for(let i=0; i<rating; i++) { stars += '★'; }
+
+    // 格式化傳送到 LINE 的文字訊息
+    const lineMessage = `【洗缸了沒官網新評價】\n\n👤 客戶暱稱：${name}\n⭐ 滿意星等：${stars} (${rating}星)\n💬 真心評論：\n${comment}\n\n📸 (請於下方直接附上清洗後的魚缸美照檔案，感恩！\u2764)`;
+
+    // 你的官方 LINE 預約網址：https://lin.ee/5P4y75u
+    // 利用 LINE URL Scheme 技術自動帶入文字 (把網址後面的 ID 抽出來串接)
+    const encodedText = encodeURIComponent(lineMessage);
+    
+    // 串接跳轉連結 (自動開啟 LINE 聊天室並填好字)
+    const lineJumpUrl = `https://line.me/R/oaMessage/@5P4y75u/?${encodedText}`;
+    
+    // 彈出感謝提示並執行跳轉
+    alert('感謝您的好評回饋！接下來將自動開啟官方 LINE 視窗，請直接按傳送，並將魚缸美照分享給我們即可完成上傳喔！');
+    window.location.href = lineJumpUrl;
+});
+</script>
+
+</body>
+</html>

@@ -317,7 +317,7 @@ document.getElementById('reviewForm').addEventListener('submit', function(e) {
     const encodedText = encodeURIComponent(lineMessage);
     
     // 串接跳轉連結 (自動開啟 LINE 聊天室並填好字)
-    const lineJumpUrl = `https://line.me/R/oaMessage/@5P4y75u/?${encodedText}`;
+    const lineJumpUrl = `https://line.me/R/oaMessage/5P4y75u/?${encodedText}`;
     
     // 彈出感謝提示並執行跳轉
     alert('感謝您的好評回饋！接下來將自動開啟官方 LINE 視窗，請直接按傳送，並將魚缸美照分享給我們即可完成上傳喔！');

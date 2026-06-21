@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- 1. 在這裡加入網站圖示 (Favicon) -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="images/logo_48x48.png" type="image/png">
     <link rel="apple-touch-icon" href="images/logo_180x180.png">
 
-    <!-- SEO 優化 -->
     <title>洗缸了沒｜高雄魚缸清洗、到府保養、水質檢測專業服務</title>
     <meta name="description" content="高雄專業魚缸清洗「洗缸了沒」，提供魚缸保養、濾材更換、水質檢測服務。解決魚缸藻類、混濁臭味問題，讓您的愛魚擁有清澈家園。高雄全區預約中。">
     <meta name="keywords" content="高雄魚缸清洗, 高雄水族保養, 到府洗魚缸, 魚缸換水, 濾材更換, 高雄魚缸清潔, 訂製魚缸, 高雄到府魚缸維護, 洗魚缸, 魚缸清潔">
     <meta name="google-site-verification" content="-i7VXnsVg4zDJ8ApWec60F25MyH0KKUn08Q0PoNsedw" />
     
-    <!-- Open Graph 標籤 (社群分享用) -->
     <meta property="og:title" content="洗缸了沒｜高雄專業魚缸清洗保養（家庭/商用定期維護）">
     <meta property="og:description" content="你的魚缸多久沒洗了？高雄專業到府清潔，讓您的魚缸煥然一新！">
     <meta property="og:image" content="images/logo2.png">
@@ -180,6 +177,79 @@
     .card h3 { margin: 10px 0; color: var(--dark-blue); font-size: 20px; }
     .card p { margin: 0; font-size: 15px; color: #475569; }
 
+    /* 📸 新增：左右拖曳對比組件樣式 */
+    .comparison-slider {
+        position: relative;
+        width: 100%;
+        max-width: 760px;
+        aspect-ratio: 16 / 10; /* 配合大魚缸比例 */
+        margin: 0 auto;
+        border-radius: 25px;
+        overflow: hidden;
+        border: 8px solid var(--tank-border);
+        box-shadow: 0 12px 30px rgba(14, 165, 233, 0.15);
+        box-sizing: border-box;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    .comparison-slider img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .img-after { z-index: 1; }
+    .img-before { z-index: 2; clip-path: inset(0 50% 0 0); } /* 預開一半 */
+    
+    /* 對比標籤 */
+    .slider-label {
+        position: absolute;
+        bottom: 15px;
+        padding: 4px 12px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: bold;
+        color: white;
+        z-index: 3;
+        pointer-events: none;
+        font-family: 'jf-openhuninn', sans-serif;
+    }
+    .label-before { left: 15px; background: #ef4444; box-shadow: 0 2px 6px rgba(239,68,68,0.4); }
+    .label-after { right: 15px; background: #22c55e; box-shadow: 0 2px 6px rgba(34,197,94,0.4); }
+
+    /* 拖曳中軸拉桿 */
+    .slider-handle {
+        position: absolute;
+        top: 0;
+        left: calc(50% - 2px);
+        width: 4px;
+        height: 100%;
+        background: white;
+        z-index: 4;
+        cursor: ew-resize;
+        box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    }
+    .slider-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 44px;
+        height: 44px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--dark-blue);
+        font-size: 20px;
+    }
+    .slider-button::before { content: "↔"; font-weight: bold; }
+
     /* 🎬 GitHub 影片專用外框樣式 */
     .video-wrapper {
         position: relative;
@@ -192,13 +262,13 @@
         box-shadow: 0 12px 30px rgba(14, 165, 233, 0.15);
         border: 8px solid var(--tank-border);
         box-sizing: border-box;
-        background: #000; /* 影片載入前防黑邊 */
+        background: #000; 
     }
     .video-wrapper video {
         display: block;
         width: 100%;
         height: 100%;
-        object-fit: cover; /* 讓影片完美填滿框框 */
+        object-fit: cover; 
     }
 
     /* 預約流程流程 */
@@ -224,10 +294,10 @@
         .grid { grid-template-columns: 1fr; } 
         .process-grid { grid-template-columns: 1fr 1fr; }
         .video-wrapper { border-width: 5px; border-radius: 15px; }
+        .comparison-slider { border-width: 5px; border-radius: 15px; }
     }
     </style>
 
-    <!-- Google 結構化資料 (幫助 SEO) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -252,7 +322,6 @@
 
 <body>
 
-<!-- 氣泡背景 -->
 <div class="bubble" style="left:10%; width:15px; height:15px; animation-duration:8s;"></div>
 <div class="bubble" style="left:25%; width:10px; height:10px; animation-duration:6s;"></div>
 <div class="bubble" style="left:40%; width:20px; height:20px; animation-duration:10s;"></div>
@@ -260,7 +329,6 @@
 <div class="bubble" style="left:75%; width:18px; height:18px; animation-duration:9s;"></div>
 <div class="bubble" style="left:90%; width:14px; height:14px; animation-duration:11s;"></div>
 
-<!-- NAVBAR -->
 <header class="navbar">
     <img src="images/logo.png" class="logo-small" alt="洗缸了沒 Logo">
     <div class="brand-text">
@@ -269,7 +337,6 @@
     </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
     <div class="tank-container">
         <div class="aquarium-tank">
@@ -285,13 +352,11 @@
             <div class="hero-sub">
                 <p>你的魚缸多久沒洗了？<br>水變濁、長藻、魚狀況不好<br>我們幫你一次整理乾淨！</p>
             </div>
-            <!-- 替換為你的 Line 連結 -->
             <a href="https://lin.ee/5P4y75u" class="btn">立即 Line 預約服務</a>
         </div>
     </div>
 </section>
 
-<!-- 為什麼選擇我們 -->
 <section class="section">
     <h2>專業處理各種魚缸問題</h2>
     <div class="grid">
@@ -313,7 +378,6 @@
     </div>
 </section>
 
-<!-- 服務項目 -->
 <section class="section">
     <h2>服務項目</h2>
     <div class="grid">
@@ -324,20 +388,33 @@
     </div>
 </section>
 
-<!-- 🎬 新增：換缸移缸影片播放區塊 (GitHub 專用寫法) -->
+<section class="section">
+    <h2>清洗前後驚人對比 💧</h2>
+    <p style="text-align: center; color: #64748b; margin-top: -15px; margin-bottom: 30px;">手動拖曳中央拉桿，親眼見證清澈奇蹟！</p>
+    
+    <div class="comparison-slider" id="fishTankSlider">
+        <img class="img-after" src="images/after1.jpg" alt="清洗後明亮魚缸">
+        <span class="slider-label label-after">清洗後 After</span>
+        
+        <img class="img-before" src="images/before1.jpg" alt="清洗前髒污魚缸">
+        <span class="slider-label label-before">清洗前 Before</span>
+        
+        <div class="slider-handle">
+            <div class="slider-button"></div>
+        </div>
+    </div>
+</section>
+
 <section class="section">
     <h2>換缸‧移缸</h2>
     <div class="video-wrapper">
-        <!-- controls 讓用戶可以點播放/暫停，playsinline 確保手機不會強制全螢幕 -->
         <video controls playsinline poster="images/logo2.png">
-            <!-- ⬇️ 這裡鍵入你 GitHub 的影片檔案路徑 (或直接換成 Raw 絕對網址) ⬇️ -->
             <source src="videos/換缸影片檔名.mp4" type="video/mp4">
             你的瀏覽器不支援播放此影片。
         </video>
     </div>
 </section>
 
-<!-- 服務流程 -->
 <section class="section">
     <h2>預約服務流程</h2>
     <div class="process-grid">
@@ -360,7 +437,6 @@
     </div>
 </section>
 
-<!-- 收費參考 -->
 <section class="section">
     <h2>收費參考</h2>
     <div class="grid">
@@ -381,6 +457,48 @@
         © 2026 洗缸了沒. All Rights Reserved.
     </div>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.getElementById("fishTankSlider");
+    const beforeImg = slider.querySelector(".img-before");
+    const handle = slider.querySelector(".slider-handle");
+    
+    let isDragging = false;
+
+    function moveSlider(x) {
+        const rect = slider.getBoundingClientRect();
+        let position = ((x - rect.left) / rect.width) * 100;
+        
+        // 限制拖曳範圍在 0% ~ 100% 內
+        if (position < 0) position = 0;
+        if (position > 100) position = 100;
+        
+        // 更新滑桿位置與遮罩裁切範圍
+        handle.style.left = `calc(${position}% - 2px)`;
+        beforeImg.style.clipPath = `inset(0 ${100 - position}% 0 0)`;
+    }
+
+    // 滑鼠拖曳事件 (電腦端)
+    handle.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        e.preventDefault();
+    });
+    window.addEventListener("mouseup", () => isDragging = false);
+    window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        moveSlider(e.clientX);
+    });
+
+    // 觸控拖曳事件 (手機端)
+    handle.addEventListener("touchstart", () => isDragging = true);
+    window.addEventListener("touchend", () => isDragging = false);
+    window.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+        moveSlider(e.touches[0].clientX);
+    });
+});
+</script>
 
 </body>
 </html>

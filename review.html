@@ -24,7 +24,7 @@
         overflow-x: hidden;
         color: #1e293b;
         line-height: 1.6;
-        padding-top: 90px; /* 留出導覽列空間 */
+        padding-top: 90px; 
     }
 
     /* ===== 氣泡背景 ===== */
@@ -131,15 +131,18 @@
         color: var(--star-color);
     }
 
-    /* 上傳提示 */
-    .upload-hint {
-        font-size: 13px;
-        color: #64748b;
-        background: #f8fafc;
-        padding: 10px 15px;
+    /* 照片預覽框 */
+    .preview-container {
+        margin-top: 10px;
+        display: none;
+        max-width: 200px;
         border-radius: 10px;
-        border-left: 4px solid var(--main-blue);
-        margin-top: 5px;
+        overflow: hidden;
+        border: 2px dashed var(--main-blue);
+    }
+    .preview-container img {
+        width: 100%;
+        display: block;
     }
 
     /* ===== 2. 官網好評牆展示區 ===== */
@@ -160,6 +163,8 @@
         border-radius: 20px;
         box-shadow: 0 8px 20px rgba(0,0,0,0.03);
         border: 1px solid #e0f2fe;
+        display: flex;
+        flex-direction: column;
     }
     .review-header {
         display: flex;
@@ -169,30 +174,31 @@
     }
     .reviewer-name { font-weight: bold; font-size: 16px; }
     .review-stars { color: var(--star-color); font-size: 18px; }
-    .review-text { font-size: 14px; color: #475569; margin-bottom: 12px; }
+    .review-text { font-size: 14px; color: #475569; margin-bottom: 12px; flex-grow: 1; }
     .review-img {
         width: 100%;
         border-radius: 10px;
         aspect-ratio: 4/3;
         object-fit: cover;
+        margin-top: auto;
     }
 
     /* 按鈕 */
     .btn {
         width: 100%;
         padding: 14px;
-        background: #22c55e; /* 使用綠色代表安全送出與 LINE */
+        background: var(--main-blue);
         color: white;
         border: none;
         border-radius: 50px;
         font-weight: bold;
         font-size: 16px;
         cursor: pointer;
-        box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
         transition: 0.3s;
         font-family: 'jf-openhuninn', sans-serif;
     }
-    .btn:hover { background: #16a34a; transform: scale(1.02); }
+    .btn:hover { background: var(--dark-blue); transform: scale(1.02); }
 
     footer { text-align: center; padding: 40px 20px; color: #64748b; background: #e0f2fe; margin-top: 50px; }
 
@@ -241,23 +247,24 @@
 
             <div class="form-group">
                 <label>清洗心得與評論</label>
-                <textarea id="custComment" class="form-control" rows="4" placeholder="請分享您對這次清洗服務、水質改善或職人態度的真實感受..." required></textarea>
+                <textarea id="custComment" class="form-control" rows="4" placeholder="請分享您對這次清洗服務的真實感受..." required></textarea>
             </div>
 
             <div class="form-group">
-                <label>上傳現場魚缸美照</label>
-                <div class="upload-hint">
-                    由於目前系統為保護隱私安全，點擊下方送出後會<b>自動跳轉至官方 LINE</b>。請直接在 LINE 訊息視窗中，將您亮晶晶的魚缸照片傳送給我們，我們將會以最快速度更新至官網好評牆上唷！❤️
+                <label>上傳魚缸美照 (選填)</label>
+                <input type="file" id="custImage" class="form-control" accept="image/*">
+                <div class="preview-container" id="previewContainer">
+                    <img id="imagePreview" src="" alt="預覽照片">
                 </div>
             </div>
 
-            <button type="submit" class="btn">送出評價並開啟 LINE 傳送照片</button>
+            <button type="submit" class="btn">提交評論（將即時顯示於下方）</button>
         </form>
     </div>
 
     <div class="reviews-display-section">
         <h2>看看其他缸友的真心推薦 💬</h2>
-        <div class="review-grid">
+        <div class="review-grid" id="reviewGrid">
             
             <div class="review-card">
                 <div class="review-header">
@@ -273,7 +280,7 @@
                     <span class="reviewer-name">三民 郭大哥</span>
                     <span class="review-stars">★★★★★</span>
                 </div>
-                <p class="review-text">這次請他們來做大工程的移缸跟擴缸，原本很擔心水族生態會崩潰，但師傅培菌手法很細心，搬運過程小心翼翼，魚隻完全沒有耗損，收費合情合理，大推！</p>
+                <p class="review-text">這次請他們來做大工程的移缸跟擴缸，師傅培菌手法很細心，搬運過程小心翼翼，魚隻完全沒有耗損，收費合情合理，大推！</p>
                 <img src="images/logo2.png" class="review-img" alt="客戶魚缸實照">
             </div>
 
@@ -286,7 +293,7 @@
                 <img src="images/after1.jpg" class="review-img" alt="客戶魚缸實照">
             </div>
 
-        </div>
+            </div>
     </div>
 </div>
 
@@ -296,29 +303,98 @@
 </footer>
 
 <script>
-document.getElementById('reviewForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // 抓取填寫的資料
-    const name = document.getElementById('custName').value;
-    const comment = document.getElementById('custComment').value;
-    const ratingElement = document.querySelector('input[name="rating"]:checked');
-    const rating = ratingElement ? ratingElement.value : '5';
-    
-    // 組裝星星符號
-    let stars = '';
-    for(let i=0; i<rating; i++) { stars += '★'; }
+document.addEventListener("DOMContentLoaded", function() {
+    const reviewForm = document.getElementById('reviewForm');
+    const custImageInput = document.getElementById('custImage');
+    const previewContainer = document.getElementById('previewContainer');
+    const imagePreview = document.getElementById('imagePreview');
+    const reviewGrid = document.getElementById('reviewGrid');
 
-    // 格式化傳送到 LINE 的文字訊息
-    const lineMessage = `【洗缸了沒官網新評價】\n\n👤 客戶暱稱：${name}\n⭐ 滿意星等：${stars} (${rating}星)\n💬 真心評論：\n${comment}\n\n📸 (請於下方直接附上清洗後的魚缸美照檔案，感恩！\u2764)`;
+    let base64ImageStr = ""; // 用來儲存轉換後的圖片編碼
 
-    // 💡 修正重點：oaMessage 後方不可以帶 @ 符號
-    const encodedText = encodeURIComponent(lineMessage);
-    const lineJumpUrl = `https://line.me/R/oaMessage/5P4y75u/?${encodedText}`;
-    
-    // 彈出感謝提示並執行跳轉
-    alert('感謝您的好評回饋！接下來將自動開啟官方 LINE 視窗，請直接按傳送，並將魚缸美照分享給我們即可完成上傳喔！');
-    window.location.href = lineJumpUrl;
+    // 1. 圖片選擇時的預覽與轉換
+    custImageInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                base64ImageStr = e.target.result; // 將圖片轉為 base64 字串儲存
+                previewContainer.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        } else {
+            previewContainer.style.display = 'none';
+            base64ImageStr = "";
+        }
+    });
+
+    // 2. 讀取並渲染已儲存的動態評論
+    function loadSavedReviews() {
+        const savedReviews = JSON.parse(localStorage.getItem('tankReviews')) || [];
+        savedReviews.forEach(review => {
+            renderReviewCard(review);
+        });
+    }
+
+    // 3. 渲染評價卡片到畫面上
+    function renderReviewCard(data) {
+        const card = document.createElement('div');
+        card.className = 'review-card';
+        
+        let starStr = '';
+        for(let i=0; i<data.rating; i++) { starStr += '★'; }
+
+        let imgHtml = data.image ? `<img src="${data.image}" class="review-img" alt="魚缸實照">` : '';
+
+        card.innerHTML = `
+            <div class="review-header">
+                <span class="reviewer-name">${data.name} (缸友認證)</span>
+                <span class="review-stars">${starStr}</span>
+            </div>
+            <p class="review-text">${data.comment}</p>
+            ${imgHtml}
+        `;
+        // 把新評價插到最前面
+        reviewGrid.insertBefore(card, reviewGrid.firstChild);
+    }
+
+    // 載入舊有的動態數據
+    loadSavedReviews();
+
+    // 4. 表單提交事件
+    reviewForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('custName').value;
+        const comment = document.getElementById('custComment').value;
+        const ratingElement = document.querySelector('input[name="rating"]:checked');
+        const rating = ratingElement ? ratingElement.value : '5';
+
+        // 封裝新資料
+        const newReview = {
+            name: name,
+            rating: rating,
+            comment: comment,
+            image: base64ImageStr,
+            date: new Date().getTime()
+        };
+
+        // 存入瀏覽器 localStorage
+        const savedReviews = JSON.parse(localStorage.getItem('tankReviews')) || [];
+        savedReviews.push(newReview);
+        localStorage.setItem('tankReviews', JSON.stringify(savedReviews));
+
+        // 即時渲染到最前線
+        renderReviewCard(newReview);
+
+        // 重置表單與預覽
+        reviewForm.reset();
+        previewContainer.style.display = 'none';
+        base64ImageStr = "";
+
+        alert('🎉 評價提交成功！已即時發表於官網好評牆！');
+    });
 });
 </script>
 

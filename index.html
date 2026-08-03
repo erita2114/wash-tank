@@ -310,7 +310,35 @@
         .video-wrapper { border-width: 5px; border-radius: 15px; }
         .comparison-slider { border-width: 5px; border-radius: 15px; }
     }
-    </style>
+    
+/* ===== 施工案例 ===== */
+.video-gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:24px;
+}
+.video-card{
+background:#fff;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+transition:.3s;
+}
+.video-card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 50px rgba(14,165,233,.25);
+}
+.video-card video{
+width:100%;
+aspect-ratio:16/9;
+object-fit:cover;
+display:block;
+}
+.video-info{padding:18px;}
+.video-info h3{margin:0;color:#0369a1;font-size:18px;}
+.video-info p{margin-top:8px;color:#64748b;font-size:14px;}
+
+</style>
 
     <script type="application/ld+json">
     {
@@ -449,34 +477,77 @@
     </div>
 </section>
 
-    <section class="section">
-    <h2>門口魚缸清洗流程</h2>
-    <div class="video-wrapper">
-        <video controls playsinline poster="images/logo2.png">
-            <source src="videos/a01.mp4" type="video/mp4">
-            你的瀏覽器不支援播放此影片。
-        </video>
-    </div>
-</section>
-
+    
 <section class="section">
-    <h2>專業換缸‧移缸作業實錄</h2>
-    <div class="video-wrapper">
-        <video controls playsinline poster="images/logo2.png">
-            <source src="videos/換缸影片檔名.mp4" type="video/mp4">
-            你的瀏覽器不支援播放此影片。
-        </video>
-    </div>
-</section>
+<h2>施工實績案例</h2>
+<p style="text-align:center;color:#64748b;margin-top:-10px;margin-bottom:30px;">
+每一次施工，我們都用成果說話。
+</p>
 
-<section class="section">
-    <h2>職人清洗魚缸日常影片</h2>
-    <div class="video-wrapper">
-        <video controls playsinline poster="images/logo2.png">
-            <source src="videos/清洗魚缸影片檔名.mp4" type="video/mp4">
-            你的瀏覽器不支援播放此影片。
-        </video>
-    </div>
+<div class="video-gallery">
+
+<div class="video-card">
+<video controls playsinline poster="images/logo2.png">
+<source src="videos/a01.mp4" type="video/mp4">
+</video>
+<div class="video-info">
+<h3>門口魚缸清洗</h3>
+<p>魚缸清潔、換水、設備整理。</p>
+</div>
+</div>
+
+<div class="video-card">
+<video controls playsinline poster="images/logo2.png">
+<source src="videos/換缸影片檔名.mp4" type="video/mp4">
+</video>
+<div class="video-info">
+<h3>大型移缸施工</h3>
+<p>搬運、培菌、重新造景。</p>
+</div>
+</div>
+
+<div class="video-card">
+<video controls playsinline poster="images/logo2.png">
+<source src="videos/清洗魚缸影片檔名.mp4" type="video/mp4">
+</video>
+<div class="video-info">
+<h3>造景缸清洗</h3>
+<p>職人細節施工紀錄。</p>
+</div>
+</div>
+
+<div class="video-card">
+<video controls playsinline poster="images/logo2.png">
+<source src="videos/七賢路188號 影片.mp4" type="video/mp4">
+</video>
+<div class="video-info">
+<h3>日常施工紀錄</h3>
+<p>真實客戶施工案例。</p>
+</div>
+</div>
+
+<div class="video-card">
+<video controls playsinline poster="images/logo2.png">
+<source src="videos/魚缸搬遷影片1.mp4" type="video/mp4">
+</video>
+<div class="video-info">
+<h3>大型移缸施工</h3>
+<p>真實客戶施工案例。</p>
+</div>
+</div>
+
+<div class="video-card">
+<video controls playsinline poster="images/logo2.png">
+<source src="videos/魚缸鋪磁磚1.mp4" type="video/mp4">
+</video>
+<div class="video-info">
+<h3>魚缸鋪設磁磚</h3>
+<p>真實客戶施工案例。</p>
+</div>
+</div>
+
+
+</div>
 </section>
 
 <section class="section">
@@ -530,6 +601,26 @@
             <p class="review-text">原本魚缸壁長滿了厚厚的綠藻，謝謝職人清洗魚缸非常乾淨，連造景洗得跟全新的一樣，水質變超透亮！</p>
             <img src="images/after1.jpg" class="review-img" alt="洗魚缸客戶好評推薦">
         </div>
+
+ <div class="card" style="padding: 20px;">
+            <div class="review-header">
+                <span class="reviewer-name">油漆 陳先生</span>
+                <span class="review-stars">★★★★★</span>
+            </div>
+            <p class="review-text">本來只是想做一個魚缸，沒想到完成後整個客廳質感直接提升一個等級！從丈量、設計、訂製到安裝都非常專業，施工細節很到位，玻璃、櫃體、管線都處理得很漂亮。售後也會耐心回答問題，讓人很安心。找專業的人做真的有差，值得推薦！</p>
+            <img src="images/訂製新缸1.jpg" class="review-img" alt="洗魚缸客戶好評推薦">
+        </div>
+
+
+<div class="card" style="padding: 20px;">
+            <div class="review-header">
+                <span class="reviewer-name">新興 東先生</span>
+                <span class="review-stars">★★★★★</span>
+            </div>
+            <p class="review-text">原本魚缸超綠，玻璃都是藻、水也很黃，過濾器裡面卡很多髒污。洗完之後整缸像新的一樣，玻璃超透、底部乾淨，連過濾器都拆開清洗，出水量變很順，魚的活動力也明顯變好了。施工很仔細，現場也收拾乾淨，之後會固定找這家保養。</p>
+            <img src="images/七賢路188號 照片.jpg" class="review-img" alt="洗魚缸客戶好評推薦">
+        </div>
+
 
         <div class="card" style="padding: 20px;">
             <div class="review-header">

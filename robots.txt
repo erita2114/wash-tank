@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://erita2114.github.io/wash-tank/sitemap.xml
+Sitemap: https://erita2114.github.io/wash-tank/sitemap.txt

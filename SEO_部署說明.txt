@@ -1,0 +1,38 @@
+洗缸了沒｜SEO 網站正式版｜部署說明
+================================
+
+請將這個資料夾內所有檔案上傳到 GitHub repository：wash-tank 的根目錄。
+
+必須上傳：
+- index.html
+- fish-tank-cleaning.html
+- pond-cleaning.html
+- tank-moving.html
+- commercial-aquarium.html
+- cases.html
+- pricing.html
+- faq.html
+- site.css
+- site.js
+- sitemap.xml
+- robots.txt
+
+原本 images/ 與 videos/ 資料夾請保留，不要刪除。新版直接沿用目前線上的圖片與影片。
+
+部署完成後測試：
+1. https://erita2114.github.io/wash-tank/
+2. https://erita2114.github.io/wash-tank/fish-tank-cleaning.html
+3. https://erita2114.github.io/wash-tank/sitemap.xml
+4. https://erita2114.github.io/wash-tank/robots.txt
+
+Google Search Console：
+1. 網址檢查首頁 → 測試實際網址 → 要求建立索引
+2. 再檢查 fish-tank-cleaning.html、pond-cleaning.html、cases.html
+3. 「Sitemap」提交：sitemap.xml
+
+接下來最有價值的 SEO 工作：
+- 每完成一個真實案件，就新增一篇獨立施工案例（地區＋魚缸類型＋問題＋處理成果＋照片/影片）。
+- 建立並完善 Google 商家檔案，持續累積真實評論。
+- 日後綁自有網域，再把所有 canonical / sitemap 網址一次換成自有網域。
+
+注意：不要建立大量只有地名不同、內容幾乎相同的頁面。
